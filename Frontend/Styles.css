@@ -1,0 +1,151 @@
+/* 1. Reset และตั้งค่าพื้นฐาน */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Kanit', sans-serif; /* ใช้ฟอนต์ Kanit */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* พื้นหลังไล่สีม่วง-ฟ้า */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #333;
+}
+
+/* 2. ตัวกล่องฟอร์ม (Container) */
+.container {
+    background: rgba(255, 255, 255, 0.95); /* สีขาวโปร่งแสงนิดๆ */
+    width: 100%;
+    max-width: 500px; /* ความกว้างสูงสุด */
+    padding: 40px;
+    border-radius: 20px; /* มุมโค้งมน */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* เงาลอยๆ ให้ดูมีมิติ */
+}
+
+/* 3. หัวข้อแบบฟอร์ม */
+.header {
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #4a4a4a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 4. การจัดวาง Layout (Flexbox) */
+.form-input {
+    margin-bottom: 20px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* ให้ตกบรรทัดได้ถ้าจอเล็ก */
+    gap: 10px;
+}
+
+/* 5. ป้ายกำกับ (Label) */
+.header-form {
+    font-weight: 500;
+    min-width: 80px; /* จัดให้ข้อความตรงกัน */
+    color: #555;
+    margin-bottom: 5px; /* สำหรับมือถือที่อาจจะตกบรรทัด */
+}
+
+/* 6. ช่องกรอกข้อมูล (Input & Textarea) */
+.form, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 16px;
+    transition: all 0.3s ease; /* ทำ Animation นุ่มๆ */
+    background-color: #f9f9f9;
+}
+
+/* Effect ตอนคลิกที่ช่อง input */
+.form:focus, textarea:focus {
+    border-color: #764ba2; /* เปลี่ยนสีขอบเป็นสีม่วง */
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(118, 75, 162, 0.2); /* เงาเรืองแสง */
+}
+
+/* ช่องข้อความ Description */
+textarea {
+    resize: vertical; /* ยืดหดได้แค่แนวตั้ง */
+    min-height: 100px;
+}
+
+/* 7. Radio & Checkbox Styling */
+/* ปรับแต่งส่วน Radio และ Checkbox ให้ดูดีขึ้นและมีระยะห่าง */
+.gender .flex div, 
+.form-input div {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    accent-color: #764ba2; /* เปลี่ยนสีปุ่มเลือกเป็นสีธีม (ใช้ได้ใน Browser ใหม่ๆ) */
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+/* 8. ปุ่มกด (Button) */
+.center {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.button {
+    background: linear-gradient(90deg, #764ba2 0%, #667eea 100%); /* ไล่สีปุ่ม */
+    color: white;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 50px; /* ปุ่มกลมรี */
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Kanit', sans-serif;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+}
+
+.button:hover {
+    transform: translateY(-2px); /* ลอยขึ้นนิดนึงตอนเอาเมาส์ชี้ */
+    box-shadow: 0 8px 20px rgba(118, 75, 162, 0.6);
+}
+
+.button:active {
+    transform: translateY(1px); /* ยุบลงตอนกด */
+}
+
+/* 9. Responsive สำหรับมือถือ */
+@media (max-width: 480px) {
+    .container {
+        padding: 25px;
+    }
+    
+    .flex.form-input {
+        flex-direction: column; /* เรียงลงมาเป็นแนวตั้ง */
+        align-items: flex-start;
+    }
+    
+    .header-form {
+        margin-bottom: 5px;
+    }
+
+    .form {
+        width: 100%;
+    }
+}

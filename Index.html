@@ -3,49 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!--ส่วนนี้จะไม่แสดงผลบนหน้าเว็บ-->
-<style>
-    /*--แต่งใครงับ แต่งอะไร*/
-    @font-face { 
-        font-family: 'Kanit';
-        src: url(./Kanit/Kanit-ExtraLightItalic.ttf);
-    }
-    body {
-        background-color: grey;
-        font-family: 'Kanit';
-    }
-    #Register-form {
-        color: red;
-        padding-right: 20px;
-        margin-left: 20px;
-        border: 1px solid black; 
-        text-align: center;
-        
-    }
-    .form-control {
-        border: 2px solid black;
-        margin-bottom: 10px;
-    }
-     </style>
+    <title>Index</title>
 </head>
-<body>
-    <!--ส่วนนี้จะแสดงผลหน้าเว็บ Browser-->
-    <div id="Register-form">Register Form</div>
-    ชื่อ : <input class="form-control" type="text" name="name">
-    นามสกุล : <input class="form-control" type="text" name="surname"> <br>
-    อายุ : <input type="number" name="age" min="0" max="150"> <br>
-    เพศ : 
-    <input type="radio" name="gender" value="male" > ชาย
-    <input type="radio" name="gender" value="famale"> หญิง
-    งานอดิเรก :
-    <input type="checkbox" name="hobby" value="reading"> อ่านหนังสือ
-    <input type="checkbox" name="hobby" value="traveling"> ท่องเที่ยว
-    <input type="checkbox" name="hobby" value="sports"> กีฬา <br>
-    คำอธิบายตัวเอง : <br>
-    <textarea name="description" rows="4" cols="50" id=""></textarea> <br>
-    <input type="submit" value="Submit">
-    
-</body>
 
+<!-- selectDOM
+document.getElementsById
+document.getElementsByClassName
+document.querySelector
+document.querySelectorAll -->
+
+<!-- ชื่อ <input
+    type="text" 
+    name="fname" 
+    value="ทดสอบชื่อ" /> -->
+
+<!-- <body>
+    <div id = "hi">Hi A</div>
+<button 
+onmouseover ="onmouseFname()"
+onmouseup="onmouseFname()"
+onmousedown="onmousedownFname()"
+>Click me</button>
+<input type="text" name="fname" onkeyup="onkeyFname()"> !-->
+<!-- //onkeydown คิอ user กดปุ่มคีย์บอร์ด จังหว้่ะกดปุุ่มจะเรียกใช้ฟังก์ชันนี้
+
+
+    //onkeyup คิอ user ปล่อยปุ่มคีย์บอร์ด จังหว้่ะปล่อยปุุ่มจะเรียกใช้ฟังก์ชันนี้ //ใช้อันนี้บ่อย
+    //onkeypress คิอ user กดปุ่มคีย์บอร์ด ค้างไว้ จะเรียกใช้ฟังก์ชันนี้
+    /*function onkeyFname() {
+        let fname= document.querySelector('input[name="fname"]')
+        console.log('fname',fname.value)
+    }
+    function onmouseFname() {
+     console.log("Mouse is over the button")  
+    } 
+    function onmouseupFname() {
+     console.log("Mouse is up the button")  
+    }
+    function onmousedownFname() {
+     console.log("Mouse mousedown")  
+    } !-->
+<body>
+    <h2>แบบฟอร์มเลือกความสนใจ</h2>
+    <div id ="content">
+        <ul>
+            <li>กีฬา</li>
+            <li>ดนตรี</li>
+            <li>อ่านหนังสือ</li>
+        </ul>
+    </div>
+    <input type ="checkbox" name="interest" value="กีฬา"> กีฬา
+    <input type ="checkbox" name="interest" value="ดนตรี"> ดนตรี
+    <input type ="checkbox" name="interest" value="อ่านหนังสือ"> อ่านหนังสือ
+    <br></br>
+    <button onclick="submitInterest()">ส่งข้อมูล</button>
+   <script>
+    function submitInterest() {
+         //ดึงข้อมูลจาก checkbox ที่เลือก
+        let checkboxes = document.querySelectorAll('input[name="interest"]');
+        let contentHTML = '<ul>'
+         //เอา value ของ checkbox ที่เลือกมาเก็บไว้ในตัวแปรร
+         for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                console.log(checkboxes[i].value); //แสดงค่าที่เลือก
+                contentHTML += '<li>' + checkboxes[i].value + '</li>'
+            }
+         }
+         
+         //วนค่าที่เลือกใส่ไปที่ html
+         contentHTML += "<ul>"
+
+        //ใส่ html ที่สร้างขึ้นใหม่ลงใน div ที่มี id="content"
+        let contentDiv = document.getElementById('content')
+        contentDiv.innerHTML = contentHTML
+    }
+   
+   /*let hiDOM = document.getElementById('hi')
+    console.log(hiDOM.textContent) 
+    hiDOM.textContent = "Hello A"
+    console.log(hiDOM.textContent)
+    console.log(hiDOM.innerHTML)
+    console.log(hiDOM.innerText)*/
+        
+    </script>
+
+</body>
 </html>
