@@ -1,0 +1,20 @@
+docker run hello-world
+docker ps
+//docker list 
+docker ps --all
+docker run busybox echo 'hello world in docker'
+docker run busybox ls
+docker run busybox ping google.com 
+docker stop CONTAINER ID  เอาไว้หยุด การรัน ping
+docker create busybox ping google.com
+docker start <CONTAINER ID>
+
+dokcer system prune เอาไว้ลบทุกตัวที่หยุดการใช้งานชั่วคราว หรือ stop ใช้กับ local ได้ แต่อย่าใช้กับ public
+docker run nginx เอาไว้ทำเว็ป production
+
+docker exec CONTAINER ID ls
+docker exec -it CONTAINER ID sh
+docker exec -it CONTAINER ID bash
+
+docker run -p 80:80 nginx -pคือการเปิดพอร์ท
+docker run -p 9000:80 nginx 9000หมายถึงเปลี่ยนเส้นทางเนื่องจากมีคนใช้ port 80 เหมือนกันกันมันเลยชน
