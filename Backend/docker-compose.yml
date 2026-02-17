@@ -31,7 +31,7 @@ services:
     depends_on: #ต้องทำงานหลังจากที่ Database พร้อมแล้ว
       - db
     networks: #สิ่งที่เราจะเชื่อมต่อ ให้อยู่ใน Network เดียวกัน
-      - weblab821 
+      - weblab821
     restart: always #ให้ Container ทำงานตลอดเวลา เมื่อเกิดปัญหาจะได้รีสตาร์ทใหม่
 
 networks:

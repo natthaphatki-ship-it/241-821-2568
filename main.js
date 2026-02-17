@@ -16,7 +16,7 @@ console.log('My name is', fristname, 'and I am', age, 'years old.');
 /*let number1 = 'John'
 let number2 = 'Doe'
 
-let result = number1 + number2; // บวก //ลบ // คูณ // หาร // หารเอาเศษ //+ ถ้าเป็น string จะเป็นการต่อ string
+let result = number1 + number2 // บวก //ลบ // คูณ // หาร // หารเอาเศษ //+ ถ้าเป็น string จะเป็นการต่อ string
 console.log("ผลการคำนวณ =", result)*/
 
 // conditionall statement
@@ -170,7 +170,7 @@ console.log(student) */
 
 //ประกาศ Function
 
-/* function calculate_grade(score) {
+ /*function calculate_grade(score) {
     if (score>= 90) {
         grade = 'A'
     }
@@ -191,11 +191,11 @@ console.log(student) */
 //เรียกใช้ฟังก์ชัน
 let student_score = 85
 let student_grade = calculate_grade(student_score)
-console.log('Student is grade is'+ student_grade) */
+console.log('Student is grade is'+ student_grade)*/ 
 
-/*let score = [10,20,30,40,50]
+/*let score = [10,20,30,40,50]*/
 
-for (i = 0; i < score.length; i++) {
+/*for (i = 0; i < score.length; i++) {
     console.log(score[i])
     console.log(`Score at index ${i} is ${score[i]}`)
     //console.log('Score at index ' + i + ' is ' + score[i])
@@ -204,6 +204,7 @@ for (i = 0; i < score.length; i++) {
 score = score.map((s) => {
     return s * 2
 })
+console.log(score)
 
 
 score.forEach((s) => {  
@@ -213,23 +214,22 @@ score.forEach((s) => {
 /*let score = [10,20,30,40,50]
 for (let index = 0; index < score.length; index++) {
     console.log('score', score[index])      
- }
-let newScore = score.filter((s)=> {
+{ *//*let newScore = score.filter((s)=> {
     if( s >= 30) {
         return true
     } else {
         return false
     }
 }) 
+console.log('newScore', newScore)*/
  
-let newScore = score.filter((s) => { 
-    return s >= 30
-}) */
+/*let newScore = score.filter((s) => { 
+    return s >= 300)
+console.log('newScore', newScore) */
 
 //object + function 
-/*
-let students = [
-    {
+
+/*let students = [{
         name: 'aa',
         score: 50,
         grade: 'A'
@@ -237,16 +237,17 @@ let students = [
     {
         name: 'bb',
         score: 60,
-        grade: 'B'f6q6r5r
-console.log('Student :', students[0])
+        grade: 'B' }]
+/*console.log('Student :', students[0])*/
 
-let student = students.find((s) => {
+/*let student = students.find((s) => {
     if (s.name == 'bb') {
         return true
     }
 })
+console.log(student)*/
 
-let doublescore_student = students.map((s) => {
+/*let doublescore_student = students.map((s) => {
     s.score = s.score * 2
     return s
 })
