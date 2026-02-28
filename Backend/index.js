@@ -9,7 +9,7 @@ let counter = 1
 
 let conn = null
 const initDBconnection = async () => {
-     conn = await mysql.createConnection({
+    conn = await mysql.createConnection({
         host: 'localhost',
         user: 'root',
         password: 'root',
@@ -20,7 +20,7 @@ const initDBconnection = async () => {
 
 //path = Get //users สำหรับ เก็บข้อมูล user ทั้งหมดที่มีอยู่ในระบบ
 app.get('/users', async (req, res) => {
- const result = await conn.query('SELECT * FROM users')
+    const result = await conn.query('SELECT * FROM users')
     res.json(result[0])
 
 })
@@ -33,41 +33,95 @@ app.get('/users', (req, res) => {
 
 // parth = POST /user
 app.post('/users', async (req, res) => {
-    let user = req.body
-    const results = await conn.query('INSERT INTO users SET ?', user)
-    console.log('results', results)
-    res.json({
-        message: 'User created successfully',
-        data: results[0]
-    
-    })
+    try {
+        let user = req.body
+        const results = await conn.query('INSERT INTO users SET ?', user)
+        console.log('results', results)
+        res.json({
+            message: 'User created successfully',
+            data: results[0]
+
+        })
+    } catch (error) {
+        console.error('Error CREATING USER:', error);
+        res.status(500).json({
+            message: 'Error Creating user',
+            error: error.message
+        })
+
+    }
+
 })
 
-// par th = put /user/:id
-app.put('/user/:id', (req, res) => {
-    let id = req.params.id
-    let updatedUser = req.body
-    //หา user ที่มี id ตรงกับ id ที่ส่งมา
-    let selecetedIndex = users.findIndex(user => user.id == id)
-
-    //อัพเดตข้อมูลของ user นั้นด้วยข้อมูลที่ส่งมาใน body ของ request
-    if (selecetedIndex.name) {
-        users[selecetedIndex].name = updatedUser.name
-    }
-    if (selecetedIndex.email) {
-        users[selecetedIndex].email = updatedUser.email
-    }
-
-
-    //ส่ง response กลับไปว่าอัพเดตสำเร็จแล้ว
-    res.json({
-        message: 'User updated successfully',
-        data: {
-            user: updatedUser,
-            indexUpdated: selecetedIndex
+app.get('/users/:id', async (req,res) => {
+    try {
+        let id = req.params.id
+        const results = await conn.query('SELECT * FROM users WHERE id = ?', id)
+        if (results[0].length == 0) {
+            throw {statusCode: 404, message: 'User not found'}
         }
-    })
+        res.json(results[0][0])
+    }
+    catch (error) {
+        console.error('Error fetching user:',error.message)
+        let statusCode = error.statusCode || 500
+        res.status(statusCode).json({
+            message: 'Error fetching user',
+            error: error.message
+        })
+    }
 })
+
+//PUT // users/:id สำหรับแก้ไขข้อมูลที่มี id ตรงกับที่ส่งมา
+app.put('/users/:id', async (req,res) => {
+    try {
+        let id = req.params.id
+        let updatedUser = req.body;
+        const results = await conn.query('UPDATE users SET ? WHERE id = ?', [updatedUser, id])
+        if (results[0].affectedRows == 0) {
+            throw {statusCode: 404, message: 'User not found'}
+        }
+        res.json({
+            message: 'User updated successfully',
+            data: updatedUser
+        })
+    }
+    catch (error) {
+        console.error('Error updating user:',error.message)
+        let statusCode = error.statusCode || 500
+        res.status(statusCode).json({
+            message: 'Error updating user',
+            error: error.message
+        })
+    }
+})
+
+
+
+
+//Delete /users/:id user ที่มี od ตรงกับที่ส่งมา
+app.delete('/users/:id', async (req,res) => {
+    try {
+        let id = req.params.id
+        const results = await conn.query('DELETE FROM users WHERE id = ?', id)
+        if (results[0].affectedRows == 0) {
+            throw {statusCode: 404, message: 'User not found'}
+        }
+        res.json({
+            message: 'User deleted successfully',
+        })
+    }
+    catch (error) {
+        console.error('Error deletubg user:',error.message)
+        let statusCode = error.statusCode || 500
+        res.status(statusCode).json({
+            message: 'Error deleteing user',
+            error: error.message
+        })
+    }
+})
+
+
 
 
 app.listen(port, async () => {
