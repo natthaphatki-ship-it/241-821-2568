@@ -5,6 +5,8 @@
     padding: 0;
 }
 
+
+
 body {
     font-family: 'Kanit', sans-serif; /* ใช้ฟอนต์ Kanit */
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* พื้นหลังไล่สีม่วง-ฟ้า */
@@ -105,6 +107,23 @@ input[type="radio"], input[type="checkbox"] {
 .center {
     text-align: center;
     margin-top: 30px;
+}
+
+.message {
+    background-color: #dddd;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.message.success {
+    background-color: #4CAF;
+    color: white;
+}
+
+.message.danger {
+    background-color: #f44336;
+    color: white;
 }
 
 .button {
