@@ -20,11 +20,6 @@ const initDBConnection = async () => {
         port: 8821
     })
 }
-//path = GET /users สำหรับเก็บข้อมูลuserทั้งหมดในระบบ
-app.get('/users',async (req, res) => {
-    const results = await conn.query('SELECT * FROM users');
-    res.json(results[0]);
-})
 
 app.get('/users/:id', async (req, res) => {
     try{
